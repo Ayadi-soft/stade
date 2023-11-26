@@ -1,16 +1,24 @@
-let list= [];
+let l= [{ nom: "med", pre: "ali", adr: "dee" }];
+l.push({ nom: "ahmad", pre: "salah", adr: "dee" });
+var x=localStorage.getItem('data');
+if (x==null)
+{var json_string = JSON.stringify(l);
+localStorage.setItem('data', json_string);
+}
+
 
 //charger liste
 function charger(){
     var x=localStorage.getItem('data');
-    list= JSON.parse(x);
-    return list;
+    l= JSON.parse(x);
+    return l;
 }
 
 // chargement de la liste
 window.addEventListener("load", function(list){ 
     carnet= document.getElementById("carnet");
     list=charger();
+    if(list!=null)
      for(var i= 0; i < list.length; i++)
     {
         np=list[i].nom + " "+list[i].pre
@@ -33,7 +41,7 @@ if(bt_find!=null)
 bt_find.addEventListener("click", function(){ adresse();});
 
 function ajout()
-{   list=charger();
+{   let l= [""]; l=charger();
 nom=document.getElementById("nom").value;
 pre=document.getElementById("pre").value;
 np=nom+" "+pre
@@ -62,17 +70,17 @@ elt=carnet.options[i].text;
   nelt=new Option(np,adr);
 carnet.options[taille]=nelt;
 
-list.push({ nom: nom, pre: pre, adr: adr });
-var json_string = JSON.stringify(list);
+l.push({ nom: nom, pre: pre, adr: adr });
+var json_string = JSON.stringify(l);
 localStorage.setItem('data', json_string);
- 
+
 // vider les valeurs des champ
 document.getElementById("nom").value="";
 document.getElementById("pre").value="";
 document.getElementById("email").value="";
 }}}
 function supp()
-{list=charger();
+{l=charger();
 carnet= document.getElementById("carnet");
 sel=carnet.options.selectedIndex;
 if(sel==-1)
@@ -80,7 +88,7 @@ alert("veuillez sélectionner un élément SVP");
 else
 {
 carnet.options[sel]=null;
-list.splice(sel, 1);
+l.splice(sel, 1);
 var json_string = JSON.stringify(list);
 localStorage.setItem('data', json_string);
  
