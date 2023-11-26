@@ -65,7 +65,7 @@ carnet.options[taille]=nelt;
 list.push({ nom: nom, pre: pre, adr: adr });
 var json_string = JSON.stringify(list);
 localStorage.setItem('data', json_string);
-alert(list.length+json_string)
+ 
 // vider les valeurs des champ
 document.getElementById("nom").value="";
 document.getElementById("pre").value="";
@@ -83,11 +83,11 @@ carnet.options[sel]=null;
 list.splice(sel, 1);
 var json_string = JSON.stringify(list);
 localStorage.setItem('data', json_string);
-alert(json_string)
+ 
 }
 }
 function adresse()
-{   alert(list.length)
+{    
     nom=document.getElementById("nom").value;
     pre=document.getElementById("pre").value;
     np=nom+" "+pre
