@@ -1,6 +1,6 @@
 //charger liste
 function charger(){
-    var x=localStorage.getItem('data');
+    var x=localStorage.getItem('data'); 
     list= JSON.parse(x);
     return list;
 }
@@ -14,6 +14,7 @@ window.addEventListener("load", function(){
   newelt=new Option(i);
 age.options[age.options.length]=newelt;
   }
+   
 });
 // lorsque on saisie le nom
 nom= document.getElementById("nom");
@@ -75,16 +76,16 @@ bt.addEventListener("click", function(){
     nom= document.getElementById("nom").value;
     pre= document.getElementById("pre").value;
     if(nom!=""&&pre!=""){
-     list=charger(); 
+     l=charger(); 
      acces=true
-     for(i =0;i<list.length;i++)
-     if(list[i].nom== nom && list[i].nom== pre){
+     for(i =0;i<l.length;i++)
+     if(list[i].nom == nom && list[i].pre== pre){
     alert(nom+" "+pre+" exixte dans la black list")
      acces=false}
-
+     }
      if(acces)
-     alert(nom+" "+pre+" pet entrer au stade")
+     alert(nom+" "+pre+" peut entrer au stade")
 
- } });
+ } );
 
 
